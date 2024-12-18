@@ -6,6 +6,12 @@ Google Classroomを使いやすくするための拡張機能です。
 - 横幅の小さいウインドウでClassroomのタイムラインを表示すると、「○○さんがさんが新しい資料を投稿しました」のような表示で文字が切れるため資料名が見えなくなる。名前を5文字までに短く表示し、文章を以下のように短縮して表示する。
   - 「ゆうきゆい-YukiYuiさんが新しい資料を投稿しました: <資料名>」→「ゆうきゆい…資料: <資料名>」
   - 「ゆうきゆい-YukiYuiさんが新しい課題を投稿しました: <課題名>」→「ゆうきゆい-…課題: <課題名>」
+- 調整は`content.js`の各変数をいじってください
+  ```
+  const name_length = 5; // 名前の文字数
+  const name_display = true; // 名前を表示するか
+  const label_display = true; // ラベルを表示するか (資料: 課題: など)
+  ```
 ## インストール方法 (Google Chrome)
 1. 任意のディレクトリに、リポジトリを[zipでダウンロード](https://github.com/Yuki-Yui/classroom-mod/archive/refs/heads/main.zip)するか ```git clone``` する
 1. zipでダウンロードしたら任意の場所に展開（解凍）する
