@@ -1,7 +1,10 @@
 const message_dict = {
-    "さんが新しい資料を投稿しました:": "資料:",
-    "さんが新しい課題を投稿しました:": "課題:"
+    "さんが新しい資料を投稿しました": "資料",
+    "さんが新しい課題を投稿しました": "課題"
 }
+const name_length = 5;
+const name_display = true;
+const label_display = true;
 
 const observer = new MutationObserver(() => {
     const spans = document.querySelectorAll('span');  
@@ -11,8 +14,14 @@ const observer = new MutationObserver(() => {
                 span.textContent = span.textContent.replace(
                     new RegExp(`(.+?)${key}`),
                     (match, name) => {
-                        const shortenedName = name.length > 5 ? name.slice(0, 5) + "…" : name;
-                        return `${shortenedName} ${value}`;
+                        if (name_display && label_display) {
+                            const shortenedName = name.length > name_length ? name.slice(0, 5) + "…" : name;
+                            return `${shortenedName} ${value}`;
+                        } else if (label_display) {
+                            return value;
+                        } else {
+                            return '';
+                        }
                     }
                 );
             }
