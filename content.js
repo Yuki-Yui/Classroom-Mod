@@ -3,7 +3,6 @@ const message_dict = {
     "さんが新しい課題を投稿しました:": "課題:"
 }
 
-
 const observer = new MutationObserver(() => {
     const spans = document.querySelectorAll('span');  
     spans.forEach((span) => {
