@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Google Classroom 拡張機能",
-    "version": "1.0",
+    "version": "2.0",
     "description": "Google Classroomを使いやすくします。",
     "permissions": ["activeTab"],
     "host_permissions": [
