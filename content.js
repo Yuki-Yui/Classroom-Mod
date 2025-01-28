@@ -10,11 +10,11 @@ const message_dict = {
 }
 
 const color = '#000000';
-const downloadSvg = `<svg viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" version="1.1">
-  <line x1="100" y1="20" x2="100" y2="180" stroke="${color}" stroke-width="20" stroke-linecap="round"/>
-  <line x1="40" y1="120" x2="100" y2="180" stroke="${color}" stroke-width="20" stroke-linecap="round"/>
-  <line x1="160" y1="120" x2="100" y2="180" stroke="${color}" stroke-width="20" stroke-linecap="round"/>
-  <line x1="20" y1="180" x2="180" y2="180" stroke="${color}" stroke-width="20" stroke-linecap="round"/>
+const downloadSvg = `<svg viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" version="1.1"style="stroke:currentColor;">
+  <line x1="100" y1="20" x2="100" y2="170" stroke-width="20"/>
+  <line x1="40" y1="120" x2="100" y2="170" stroke-width="20"/>
+  <line x1="160" y1="120" x2="100" y2="170" stroke-width="20"/>
+  <line x1="20" y1="180" x2="180" y2="180" stroke-width="20"/>
 </svg>`
 
 const observer = new MutationObserver(() => {
@@ -57,6 +57,7 @@ const observer = new MutationObserver(() => {
                 directURL = `https://drive.google.com/u/${loginID}/uc?id=${fileId}`;
                 const directLink = document.createElement('a');
                 directLink.href = directURL;
+                directLink.style.color = "currentColor";
                 directLink.classList.add('direct-download');
                 const downloadIcon = document.createElement('div');
                 downloadIcon.innerHTML = downloadSvg;
