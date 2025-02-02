@@ -30,7 +30,7 @@ const observer = new MutationObserver(() => {
                         new RegExp(`(.+?)${key}`),
                         (match, name) => {
                             if (name_display && label_display) {
-                                const shortenedName = name.length > name_length ? name.slice(0, 5) + "…" : name;
+                                const shortenedName = name.length > name_length ? name.slice(0, name_length) + "…" : name;
                                 return `${shortenedName} ${value}`;
                             } else if (label_display) {
                                 return value;
