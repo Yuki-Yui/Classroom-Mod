@@ -17,9 +17,12 @@ Google Classroomを使いやすくするための拡張機能です。
   const name_display = true; // 名前を表示するか
   const label_display = true; // ラベルを表示するか (資料: 課題: など)
   ```
+
 ### 直ダウンロード
 - 資料横のダウンロードボタンを押すと、ページ移動せずに直接資料をダウンロードできる。
-- 新しいページで開くと資料のダウンロードを待たず、ほかの資料をダウンロードできる。
+- ダウンロードボタン上で右クリックし、「新しいページで開く」を選ぶと、資料のダウンロードを待たずにほかの資料をダウンロードできる。
+<img src="img/img1.png" alt="直ダウンロードの例" style="width: 100%; max-width: 30rem; margin: auto; display: block;">
+
 ## インストール方法 (Google Chrome)
 1. 任意のディレクトリに、リポジトリを[zipでダウンロード](https://github.com/Yuki-Yui/classroom-mod/archive/refs/heads/main.zip)するか ```git clone``` する
 1. zipでダウンロードしたら任意の場所に展開（解凍）する
