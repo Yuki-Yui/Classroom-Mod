@@ -9,14 +9,35 @@ const message_dict = {
     "さんが新しい課題を投稿しました": "課題"
 }
 
-const color = '#000000';
+const directDownloadInitialColor = '#1f1f1f';
+const directDownloadHoverColor = '#0b57d0';
 const downloadSvg = `<svg viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" version="1.1">
-  <path d="M 100 10 L 100 160" stroke="black" stroke-width="20" fill="transparent" />
-  <path d="M 40 100 L 100 160 L 160 100" stroke="black" stroke-width="20" fill="transparent" />
-  <path d="M 10 140 L 10 190 L 190 190 L 190 140" stroke="black" stroke-width="20" fill="transparent"/>
+  <path d="M 100 10 L 100 160" stroke="currentColor" stroke-width="20" fill="transparent" />
+  <path d="M 40 100 L 100 160 L 160 100" stroke="currentColor" stroke-width="20" fill="transparent" />
+  <path d="M 10 140 L 10 190 L 190 190 L 190 140" stroke="currentColor" stroke-width="20" fill="transparent"/>
 </svg>`
 
+function injectDirectDownloadStyle() {
+    if (document.getElementById('direct-download-style')) {
+        return;
+    }
+
+    const style = document.createElement('style');
+    style.id = 'direct-download-style';
+    style.textContent = `
+        .direct-download {
+            color: ${directDownloadInitialColor};
+        }
+        .direct-download:hover {
+            color: ${directDownloadHoverColor};
+        }
+    `;
+    document.head.appendChild(style);
+}
+
 const observer = new MutationObserver(() => {
+    
+    injectDirectDownloadStyle();
 
     if (replace_label){
         replaceLabelText();
@@ -66,14 +87,18 @@ function createDownloadButton() {
             directURL = `https://drive.google.com/u/${loginID}/uc?id=${fileId}`;
             const directLink = document.createElement('a');
             directLink.href = directURL;
-            directLink.style.color = "currentColor";
             directLink.classList.add('direct-download');
             const downloadIcon = document.createElement('div');
             downloadIcon.innerHTML = downloadSvg;
             downloadIcon.style.width = '1.5em';
             downloadIcon.style.height = '1.5em';
             directLink.appendChild(downloadIcon);
-            parentDiv.appendChild(directLink);
+            // parentDiv.appendChild(directLink);
+            driveLink.children[0].after(directLink);
+            directLink.onclick = (e) => {
+                e.stopPropagation();
+            console.log("directLink clicked");
+            };
         }
     });
 }
